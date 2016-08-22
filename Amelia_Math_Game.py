@@ -31,29 +31,32 @@ def text_objects(text, font):
     textSurface = font.render(text, True, aqua)
     return textSurface, textSurface.get_rect()
     
-def message_display(text):
-    titleText = pygame.font.Font('Century Schoolbook.ttf', 64)
+def title_display(text):
+    titleText = pygame.font.Font('CENSCBK.ttf', 64)
     TextSurf, TextRect = text_objects(text, titleText)
     TextRect.center = ((width/2),(height/2))
     screen.blit(TextSurf, TextRect)
     pygame.display.update()
-    time.sleep(2)
+    time.sleep(15)
     
-    
+def counter_display(count):
+    font = pygame.font.Font('CENSCBK.ttf', 16)
+    text = font.render("Number Right: "+str(count), True, aqua)
+    screen.blit(text, (0,0))
 
-#Initialize the Close Game Button
-
-done = False
-
-while not done:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            done = True
-        print event
+#Start Menu Loop
+def game_intro():
+    intro = True
+    while intro:
+        for event in pygame.event.get():
+            print event
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
         screen.fill(purple)
-    pygame.display.update()
-    clock.tick(60)
-    
+        title_display("Amelia's Math Game")
+        
+game_intro()    
 pygame.quit()
 quit()
     

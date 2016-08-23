@@ -5,6 +5,9 @@ Created on Sun Aug 21 17:46:24 2016
 
 @author: Katie
 """
+import sys
+sys.path.insert(0, 'C:\Users\Katie\Anaconda2\Lib\site-packages')
+print '\n'.join(sys.path)
 
 import pygame
 import time

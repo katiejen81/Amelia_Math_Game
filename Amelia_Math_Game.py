@@ -18,6 +18,7 @@ aqua = 0, 245, 255
 purple = 128, 0, 128
 black = 0, 0, 0
 white = 255, 255, 255
+pink = 255, 105, 180
 
 #Set the screen size
 width = 800
@@ -32,7 +33,7 @@ def text_objects(text, font):
     return textSurface, textSurface.get_rect()
     
 def title_display(text):
-    titleText = pygame.font.Font('CENSCBK.ttf', 64)
+    titleText = pygame.font.Font('LiberationSerif-Regular.ttf', 64)
     TextSurf, TextRect = text_objects(text, titleText)
     TextRect.center = ((width/2),(height/2))
     screen.blit(TextSurf, TextRect)
@@ -40,7 +41,7 @@ def title_display(text):
     time.sleep(15)
     
 def counter_display(count):
-    font = pygame.font.Font('CENSCBK.ttf', 16)
+    font = pygame.font.Font('LiberationSerif-Regular.ttf', 16)
     text = font.render("Number Right: "+str(count), True, aqua)
     screen.blit(text, (0,0))
 
@@ -54,7 +55,13 @@ def game_intro():
                 pygame.quit()
                 quit()
         screen.fill(purple)
+        pygame.draw.rect(screen, aqua, (50, 400, 250, 100))
+        pygame.draw.rect(screen, pink, (500, 400, 250, 100)) 
+        pygame.display.update()
         title_display("Amelia's Math Game")
+
+        
+
         
 game_intro()    
 pygame.quit()

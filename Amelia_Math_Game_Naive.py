@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+
 """
 Amelia's Math Program - Naive Version
 Created on Sat Oct  1 20:53:19 2016
@@ -48,13 +48,6 @@ def play_again():
     print "Entering N will quit the game."
     cgame = raw_input('Enter Y to play again, N to quit: ')
     return cgame
-    if cgame.lower() == 'n':
-        quit()
-    elif cgame.lower() == 'y':
-        intro_screen()
-    else:
-        print "That entry won't work!"
-        print "Please enter a Y to keep playing, N to quit."
         
 def internet_treat():
     print "Please enjoy this internet treat as a reward for your hard work!"
@@ -122,23 +115,22 @@ def game(s):
             ccount = ccount + 1
             time.sleep(2)
         elif int(panswer) != canswer and loopct < 5:
-            print "That's not right, let's try another one"
+            print "\tThat's not right, let's try another one"
             print ""
             time.sleep(2)
         else:
-            print "That's not right, let's see how you did"
+            print "\tThat's not right, let's see how you did"
         
     pctc = str((ccount / 5)*100) + "%"
     print "You got %d correct out of 5" % (ccount)
     print "That's %s correct!" % (pctc) 
     
-    if pctc < .5:
+    if ccount / 5 < .5:
         print "Let's play again so that you can keep trying."
-        play_again()
     else:
         print "You did great!"
+        time.sleep(5)
         internet_treat()
-        play_again()
             
     #We will need to add some code down here in order to add a library of the internet treat
     #And we will need to add some stuff to allow Amelia to play again if she wants to     
@@ -147,3 +139,21 @@ def game(s):
 #Game execution
 selector = intro_screen()
 game(selector)
+cgame = play_again()
+    
+if cgame.lower() == 'n':
+    quit()
+elif cgame.lower() == 'y':
+    selector = intro_screen()
+    game(selector)
+    cgame = play_again()
+else:
+    print "That entry won't work!"
+    print "Please enter a Y to keep playing, N to quit."
+    cgame = play_again()
+    if cgame.lower() == 'n':
+        quit()
+    elif cgame.lower() == 'y':
+        selector = intro_screen()
+        game(selector)
+        cgame = play_again()

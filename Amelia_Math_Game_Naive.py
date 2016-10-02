@@ -1,4 +1,4 @@
-
+#!/usr/bin/env python
 """
 Amelia's Math Program - Naive Version
 Created on Sat Oct  1 20:53:19 2016
@@ -137,23 +137,19 @@ def game(s):
 
     
 #Game execution
-selector = intro_screen()
-game(selector)
-cgame = play_again()
-    
-if cgame.lower() == 'n':
-    quit()
-elif cgame.lower() == 'y':
+
+lgame = True
+while lgame:
     selector = intro_screen()
     game(selector)
     cgame = play_again()
-else:
-    print "That entry won't work!"
-    print "Please enter a Y to keep playing, N to quit."
-    cgame = play_again()
+	    
     if cgame.lower() == 'n':
-        quit()
+	lgame = False
     elif cgame.lower() == 'y':
-        selector = intro_screen()
-        game(selector)
-        cgame = play_again()
+	lgame = True
+    else:
+	print "That entry won't work!"
+	print "Please enter a Y to keep playing, N to quit."
+	cgame = play_again()
+quit()

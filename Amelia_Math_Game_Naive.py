@@ -10,6 +10,7 @@ Written in Python2
 from __future__ import division   
 import random
 import time 
+import webbrowser
 
 #Define the introduction screen
 def intro_screen():
@@ -41,6 +42,57 @@ def intro_screen():
         if selector in outcomes and selector.lower() != 'h':
            return selector
            Intro = False
+           
+def play_again():
+    print "Would you like to play again? Enter Y for yes or N for no."
+    print "Entering N will quit the game."
+    cgame = raw_input('Enter Y to play again, N to quit: ')
+    return cgame
+    if cgame.lower() == 'n':
+        quit()
+    elif cgame.lower() == 'y':
+        intro_screen()
+    else:
+        print "That entry won't work!"
+        print "Please enter a Y to keep playing, N to quit."
+        
+def internet_treat():
+    print "Please enjoy this internet treat as a reward for your hard work!"
+    library = ['http://www.zooborns.com/', 
+        'http://spaceplace.nasa.gov/menu/solar-system/', 
+        'http://kids.nationalgeographic.com/animals/', 
+        'http://www.akc.org/', 
+        'http://www.americaslibrary.gov/es/index.php', 
+        'http://www.americaslibrary.gov/aa/earhart/aa_earhart_subj.html', 
+        'http://www.americaslibrary.gov/jb/index.php', 
+        'http://www.americaslibrary.gov/sh/animation/sh_animation_cartoon_1.html',
+        'http://www.scholastic.com/scholastic_thanksgiving/',
+        'http://amazingspace.org/',
+        'https://earth.jsc.nasa.gov/Collections/EarthFromSpace/lores.pl?PHOTO=ISS029-E-12564',
+        'https://earth.jsc.nasa.gov/Collections/EarthFromSpace/photoinfo.pl?PHOTO=STS064-46-26',
+        'https://earth.jsc.nasa.gov/Collections/EarthFromSpace/photoinfo.pl?PHOTO=STS066-124-46',
+        'https://earth.jsc.nasa.gov/Collections/EarthFromSpace/photoinfo.pl?PHOTO=SL3-46-199',
+        'https://earth.jsc.nasa.gov/Collections/EarthFromSpace/photoinfo.pl?PHOTO=ISS006-E-21591',
+        'https://earth.jsc.nasa.gov/Collections/EarthFromSpace/photoinfo.pl?PHOTO=STS039-342-28',
+        'http://fourmilab.ch/cgi-bin/Earth/action?opt=-p',
+        'https://www.youtube.com/watch?v=bWeaQctUp1c',
+        'http://creatingmusic.com/new/scales/index.html',
+        'http://creatingmusic.com/stepPlay/index.html',
+        'https://archive.org/details/PeterAndTheWolf_753',
+        'http://www.classicsforkids.com/music/instruments_orchestra.asp',
+        'http://www.classicsforkids.com/music/hear.asp',
+        'http://www.classicsforkids.com/music/periods.asp',
+        'http://www.exploratorium.edu/hockey/',
+        'http://www.colormatters.com/color-matters-for-kids/why-are-school-buses-yellow',
+        'http://www.colormatters.com/color-matters-for-kids/how-animals-see-color',
+        'http://www.metmuseum.org/metmedia/interactives/start-with-art/learn-about-color',
+        'http://www.metmuseum.org/art/online-features/metkids/time-machine',
+        'http://www.bbc.co.uk/nature/life/Dinosaur',
+        'http://www.nationalgeographic.com/features/96/dinoeggs/museum/intro/museum.html'
+        ]
+    ts = random.randint(0, 30)
+    webbrowser.open(library[ts])
+    
            
 #Define the game play
 def game(s):
@@ -79,6 +131,15 @@ def game(s):
     pctc = str((ccount / 5)*100) + "%"
     print "You got %d correct out of 5" % (ccount)
     print "That's %s correct!" % (pctc) 
+    
+    if pctc < .5:
+        print "Let's play again so that you can keep trying."
+        play_again()
+    else:
+        print "You did great!"
+        internet_treat()
+        play_again()
+            
     #We will need to add some code down here in order to add a library of the internet treat
     #And we will need to add some stuff to allow Amelia to play again if she wants to     
 
